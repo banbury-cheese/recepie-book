@@ -21,7 +21,9 @@ export default function RootLayout({
         <div className="menu layout-wrapper__child">
           <div className="menu__header">
             <div className="menu__toggle">Close</div>
-            <Link href="/">Recipes for Food</Link>
+            <Link href="/">
+              <b>Recipes for Food</b>
+            </Link>
           </div>
           <ul className="menu__contents">
             <li className="menu__item">

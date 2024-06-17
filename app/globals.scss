@@ -3,36 +3,62 @@
 @tailwind utilities;
 @import "./reset.scss";
 
-*,
-*:after,
-*:before {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@font-face {
+  font-family: "Century Schoolbook";
+  src: url("../fonts/CenturySchL-BoldItal.woff2") format("woff2"),
+    url("../fonts/CenturySchL-BoldItal.ttf") format("ttf");
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Century Schoolbook";
+  src: url("../fonts/CenturySchL-Roma.woff2") format("woff2"),
+    url("../fonts/CenturySchL-Roma.ttf") format("ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Century Schoolbook";
+  src: url("../fonts/CenturySchL-Bold.woff2") format("woff2"),
+    url("../fonts/CenturySchL-Bold.ttf") format("ttf");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Century Schoolbook";
+  src: url("../fonts/CenturySchL-Ital.woff2") format("woff2"),
+    url("../fonts/CenturySchL-Ital.ttf") format("ttf");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Century Schoolbook Mono";
+  src: url("../fonts/CenturySchoolbookBT-Monospace.woff2") format("woff2"),
+    url("../fonts/CenturySchoolbookBT-Monospace.otf") format("otf");
+  font-weight: normal;
+  font-style: normal;
 }
 
 :root {
   --font-size: 1.6rem;
-  --font-size--mobile: 1.4rem;
+  --font-size--mobile: 14px;
   --line-height: 1.25;
   --line-height-em: 1.25em;
   --margin: 2.5rem;
   --margin--mobile: 1.5rem;
   --font-family: "Century Schoolbook", serif;
-  --menu-width: 20vw;
+  --menu-width: 30vw;
   --width-constrained-max-width: 800px;
   --border: 1px solid #000;
 }
 
 html {
   @apply relative h-screen w-screen block;
-  -webkit-text-size-adjust: 100%;
-
-  body {
-    font-family: var(--font-family);
-    font-size: var(--font-size);
-    line-height: var(--line-height);
-  }
+  font-size: 10px;
 
   .layout-wrapper__child {
     position: absolute;
@@ -43,68 +69,102 @@ html {
   }
 }
 
-@font-face {
-    font-family: 'Century Schoolbook';
-    src: url('../fonts/CenturySchL-BoldItal.woff2') format('woff2'),
-        url('../fonts/CenturySchL-BoldItal.ttf') format('ttf');
-    font-weight: bold;
-    font-style: italic;
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  line-height: var(--line-height);
 }
 
-@font-face {
-    font-family: 'Century Schoolbook';
-    src: url('../fonts/CenturySchL-Roma.woff2') format('woff2'),
-        url('../fonts/CenturySchL-Roma.ttf') format('ttf');
-    font-weight: normal;
-    font-style: normal;
+.blocky {
+  display: block;
+  padding: var(--margin);
 }
 
-@font-face {
-    font-family: 'Century Schoolbook';
-    src: url('../fonts/CenturySchL-Bold.woff2') format('woff2'),
-        url('../fonts/CenturySchL-Bold.ttf') format('ttf');
-    font-weight: bold;
-    font-style: normal;
+ul {
+  list-style-type: none;
 }
 
-@font-face {
-    font-family: 'Century Schoolbook';
-    src: url('../fonts/CenturySchL-Ital.woff2') format('woff2'),
-        url('../fonts/CenturySchL-Ital.ttf') format('ttf');
-    font-weight: normal;
-    font-style: italic;
+strong,
+b {
+  font-weight: bold;
 }
 
-@font-face {
-    font-family: 'Century Schoolbook Mono';
-    src: url('../fonts/CenturySchoolbookBT-Monospace.woff2') format('woff2'),
-        url('../fonts/CenturySchoolbookBT-Monospace.woff') format('otf');
-    font-weight: normal;
-    font-style: normal;
+img {
+  display: block;
+  width: 100%;
 }
 
-menu {
-  @apply flex flex-col w-[30vw] left-0;
+a {
+  color: currentColor;
+  text-decoration: underline;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.width-constrained {
+  max-width: var(--width-constrained-max-width);
+}
+
+/* LAYOUT */
+.layout-wrapper {
+  position: relative;
+  height: 100vh;
+}
+
+.menu {
+  @apply flex flex-col w-[var(--menu-width)] left-0;
   border-right: var(--border);
 
+  a {
+    text-decoration: none;
+    color: currentColor;
+  }
+
   &__header {
-    @apply sticky top-0 block p-[var(--margin)] bg-white;
+    @apply sticky top-0 bg-white;
     border-bottom: var(--border);
+    @extend .blocky;
   }
   &__toggle {
+    @apply hidden float-right;
     a {
     }
   }
   &__contents {
+    list-style-type: none;
   }
   &__item {
+    &:first-child {
+      border-top: initial;
+    }
+
+    border-top: var(--border);
+
+    &:hover {
+      @apply bg-black text-white;
+    }
+
     &__link {
+      @extend .blocky;
     }
   }
   &__footer {
+    @apply sticky bottom-0 bg-white;
+    border-top: var(--border);
+    @extend .blocky;
+
     &__contents {
+      @apply flex flex-row flex-wrap;
     }
     &__item {
+      &:first-child {
+        margin-left: initial;
+      }
+
+      margin-left: var(--margin);
+
       a {
       }
     }
@@ -115,4 +175,9 @@ menu {
   width: calc(100vw - var(--menu-width));
   right: 0;
   padding: var(--margin);
+}
+
+#print {
+  float: right;
+  margin-left: var(--margin);
 }
