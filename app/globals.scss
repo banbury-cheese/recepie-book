@@ -1,4 +1,118 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "./reset.scss";
 
+*,
+*:after,
+*:before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --font-size: 1.6rem;
+  --font-size--mobile: 1.4rem;
+  --line-height: 1.25;
+  --line-height-em: 1.25em;
+  --margin: 2.5rem;
+  --margin--mobile: 1.5rem;
+  --font-family: "Century Schoolbook", serif;
+  --menu-width: 20vw;
+  --width-constrained-max-width: 800px;
+  --border: 1px solid #000;
+}
+
+html {
+  @apply relative h-screen w-screen block;
+  -webkit-text-size-adjust: 100%;
+
+  body {
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    line-height: var(--line-height);
+  }
+
+  .layout-wrapper__child {
+    position: absolute;
+    height: 100vh;
+    top: 0;
+    overflow: scroll;
+    background-color: #fff;
+  }
+}
+
+@font-face {
+    font-family: 'Century Schoolbook';
+    src: url('../fonts/CenturySchL-BoldItal.woff2') format('woff2'),
+        url('../fonts/CenturySchL-BoldItal.ttf') format('ttf');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Century Schoolbook';
+    src: url('../fonts/CenturySchL-Roma.woff2') format('woff2'),
+        url('../fonts/CenturySchL-Roma.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Century Schoolbook';
+    src: url('../fonts/CenturySchL-Bold.woff2') format('woff2'),
+        url('../fonts/CenturySchL-Bold.ttf') format('ttf');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Century Schoolbook';
+    src: url('../fonts/CenturySchL-Ital.woff2') format('woff2'),
+        url('../fonts/CenturySchL-Ital.ttf') format('ttf');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Century Schoolbook Mono';
+    src: url('../fonts/CenturySchoolbookBT-Monospace.woff2') format('woff2'),
+        url('../fonts/CenturySchoolbookBT-Monospace.woff') format('otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+menu {
+  @apply flex flex-col w-[30vw] left-0;
+  border-right: var(--border);
+
+  &__header {
+    @apply sticky top-0 block p-[var(--margin)] bg-white;
+    border-bottom: var(--border);
+  }
+  &__toggle {
+    a {
+    }
+  }
+  &__contents {
+  }
+  &__item {
+    &__link {
+    }
+  }
+  &__footer {
+    &__contents {
+    }
+    &__item {
+      a {
+      }
+    }
+  }
+}
+
+.content {
+  width: calc(100vw - var(--menu-width));
+  right: 0;
+  padding: var(--margin);
+}
