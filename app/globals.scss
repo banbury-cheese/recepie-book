@@ -5,7 +5,8 @@
 
 @font-face {
   font-family: "Century Schoolbook";
-  src: url("../fonts/CenturySchL-BoldItal.woff2") format("woff2"),
+  src:
+    url("../fonts/CenturySchL-BoldItal.woff2") format("woff2"),
     url("../fonts/CenturySchL-BoldItal.ttf") format("ttf");
   font-weight: bold;
   font-style: italic;
@@ -13,7 +14,8 @@
 
 @font-face {
   font-family: "Century Schoolbook";
-  src: url("../fonts/CenturySchL-Roma.woff2") format("woff2"),
+  src:
+    url("../fonts/CenturySchL-Roma.woff2") format("woff2"),
     url("../fonts/CenturySchL-Roma.ttf") format("ttf");
   font-weight: normal;
   font-style: normal;
@@ -21,7 +23,8 @@
 
 @font-face {
   font-family: "Century Schoolbook";
-  src: url("../fonts/CenturySchL-Bold.woff2") format("woff2"),
+  src:
+    url("../fonts/CenturySchL-Bold.woff2") format("woff2"),
     url("../fonts/CenturySchL-Bold.ttf") format("ttf");
   font-weight: bold;
   font-style: normal;
@@ -29,7 +32,8 @@
 
 @font-face {
   font-family: "Century Schoolbook";
-  src: url("../fonts/CenturySchL-Ital.woff2") format("woff2"),
+  src:
+    url("../fonts/CenturySchL-Ital.woff2") format("woff2"),
     url("../fonts/CenturySchL-Ital.ttf") format("ttf");
   font-weight: normal;
   font-style: italic;
@@ -37,7 +41,8 @@
 
 @font-face {
   font-family: "Century Schoolbook Mono";
-  src: url("../fonts/CenturySchoolbookBT-Monospace.woff2") format("woff2"),
+  src:
+    url("../fonts/CenturySchoolbookBT-Monospace.woff2") format("woff2"),
     url("../fonts/CenturySchoolbookBT-Monospace.otf") format("otf");
   font-weight: normal;
   font-style: normal;
@@ -151,8 +156,9 @@ a:hover {
     }
   }
   &__footer {
-    @apply sticky bottom-0 bg-white;
+    @apply absolute w-full bottom-0 bg-white;
     border-top: var(--border);
+
     @extend .blocky;
 
     &__contents {
