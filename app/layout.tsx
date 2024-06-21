@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.scss";
 import Link from "next/link";
-import client from "./lib/sanity";
+import { client } from "./lib/sanity";
 import recepie from "@/sanity/schemaTypes/recepie";
 
 export const metadata: Metadata = {
@@ -32,7 +32,6 @@ export default async function RootLayout({
 }>) {
   const recipes = await getData();
 
-  console.log(recipes);
   return (
     <html lang="en">
       <body className="layout-wrapper">

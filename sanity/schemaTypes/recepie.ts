@@ -54,17 +54,30 @@ export default {
       name: 'content',
       title: 'Content',
       type: 'array',
-      of: [
-        {type: 'block'},
-        {
-          type: 'image',
-        },
-      ],
+      of: [{type: 'block'}],
     },
     {
       name: 'prints',
       title: 'Prints',
       type: 'number',
+    },
+    {
+      name: 'images',
+      type: 'array',
+      title: 'Images',
+      of: [
+        {
+          name: 'image',
+          type: 'image',
+          title: 'Image',
+          options: {
+            hotspot: true,
+          },
+        },
+      ],
+      options: {
+        layout: 'grid',
+      },
     },
   ],
   initialValue: {

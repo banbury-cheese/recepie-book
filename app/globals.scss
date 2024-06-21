@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import "./reset.scss";
+@import "./styles/breakpoints.scss";
 
 @font-face {
   font-family: "Century Schoolbook";
@@ -56,9 +56,37 @@
   --margin: 2.5rem;
   --margin--mobile: 1.5rem;
   --font-family: "Century Schoolbook", serif;
-  --menu-width: 30vw;
+  --menu-width: 20vw;
   --width-constrained-max-width: 800px;
   --border: 1px solid #000;
+}
+
+@media screen and (max-width: 1333px) {
+  :root {
+    --menu-width: 30vw;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  :root {
+    --menu-width: 30vw;
+  }
+}
+
+@media screen and (max-width: 728px) {
+  :root {
+    --menu-width: 30vw;
+    --font-size: var(--font-size--mobile);
+    --margin: var(--margin--mobile);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  :root {
+    --menu-width: 30vw;
+    --font-size: var(--font-size--mobile);
+    --margin: var(--margin--mobile);
+  }
 }
 
 html {
@@ -122,6 +150,10 @@ a:hover {
   @apply flex flex-col w-[var(--menu-width)] left-0;
   border-right: var(--border);
 
+  @include media("<tablet") {
+    @apply grid grid-cols-1 grid-rows-4;
+  }
+
   a {
     text-decoration: none;
     color: currentColor;
@@ -181,6 +213,37 @@ a:hover {
   width: calc(100vw - var(--menu-width));
   right: 0;
   padding: var(--margin);
+
+  .recepieContent {
+    p:after {
+      content: "";
+      display: inline-block;
+      width: 0px;
+    }
+
+    ol {
+      list-style-type: decimal;
+      margin-left: 1.1em;
+
+      li {
+        display: list-item;
+        text-align: -webkit-match-parent;
+        unicode-bidi: isolate;
+        &::marker {
+          unicode-bidi: isolate;
+          font-variant-numeric: tabular-nums;
+          text-transform: none;
+          text-indent: 0px !important;
+          text-align: start !important;
+          text-align-last: start !important;
+        }
+      }
+    }
+
+    &__images {
+      @apply mt-4 grid grid-cols-2 gap-10;
+    }
+  }
 }
 
 #print {
