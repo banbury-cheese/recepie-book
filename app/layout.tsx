@@ -4,6 +4,8 @@ import Link from "next/link";
 import { client } from "./lib/sanity";
 import { recepieCard } from "./lib/interface";
 import Navbar from "./components/navbar";
+import MenuHeader from "./components/menuHeader";
+import MenuMobile from "./components/menuMobile";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -36,13 +38,9 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className="layout-wrapper">
-        <div className="menu layout-wrapper__child">
-          <div className="menu__header">
-            <div className="menu__toggle">Close</div>
-            <Link href="/">
-              <b>Recipes for Food</b>
-            </Link>
-          </div>
+        <MenuMobile />
+        <div className="layout-wrapper__child menu">
+          <MenuHeader />
           <Navbar recipes={recipes} />
           <div className="menu__footer">
             <ul className="menu__footer__contents">
