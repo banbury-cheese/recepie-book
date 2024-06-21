@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import "./globals.scss";
 import Link from "next/link";
 import { client } from "./lib/sanity";
-import recepie from "@/sanity/schemaTypes/recepie";
+import { recepieCard } from "./lib/interface";
+import Navbar from "./components/navbar";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -30,7 +31,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const recipes = await getData();
+  const recipes: recepieCard[] = await getData();
 
   return (
     <html lang="en">
@@ -42,23 +43,7 @@ export default async function RootLayout({
               <b>Recipes for Food</b>
             </Link>
           </div>
-          <ul className="menu__contents">
-            {recipes.map((recepie: any, idx: number) => (
-              <li key={idx} className="menu__item">
-                <Link
-                  className="menu__item__link"
-                  href={`/recepie/${recepie.slug.current}`}
-                >
-                  <p>
-                    <b>{recepie.name}</b>
-                  </p>
-                  <p>
-                    {recepie.duration} - <i>{recepie.difficulty}</i>
-                  </p>
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <Navbar recipes={recipes} />
           <div className="menu__footer">
             <ul className="menu__footer__contents">
               <li className="menu__footer__item">

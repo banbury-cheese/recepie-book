@@ -8,3 +8,11 @@ export interface fullRecepie {
   mainImage: any;
   images: any;
 }
+
+export interface recepieCard {
+  slug: string;
+  name: string;
+  duration: string;
+  difficulty: string;
+  chef: string;
+}

@@ -23,7 +23,7 @@ async function getData(slug: string) {
   return data;
 }
 
-export default async function Recepiee({
+export default async function Recepie({
   params,
 }: {
   params: { slug: string };
@@ -48,7 +48,7 @@ export default async function Recepiee({
         <PortableText value={recepie.content} />
       </div>
       <div className="recepieContent__images width-constrained">
-        {recepie.images.map((image: any, idx: number) => (
+        {recepie.images?.map((image: any, idx: number) => (
           <Link
             href={urlFor(image).url()}
             rel="noopener noreferrer"

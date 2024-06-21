@@ -183,6 +183,10 @@ a:hover {
       @apply bg-black text-white;
     }
 
+    &-selected {
+      @apply bg-black text-white;
+    }
+
     &__link {
       @extend .blocky;
     }
