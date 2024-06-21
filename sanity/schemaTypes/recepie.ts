@@ -30,10 +30,7 @@ export default {
         list: [
           {title: 'Easy', value: 'easy'},
           {title: 'Medium', value: 'medium'},
-          {title: 'Not-So-Easy', value: 'not-so-easy'},
-          {title: 'Complex', value: 'complex'},
           {title: 'Hard', value: 'hard'},
-          {title: 'Extreme', value: 'extreme'},
         ],
       },
     },
