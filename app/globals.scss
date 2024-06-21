@@ -185,7 +185,7 @@ a:hover {
     @extend .blocky;
   }
   &__toggle {
-    @apply float-right;
+    @apply float-right cursor-pointer;
     display: none;
     @include media("<tablet") {
       display: block;
