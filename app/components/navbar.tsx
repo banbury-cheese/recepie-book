@@ -14,7 +14,6 @@ export default function Navbar({ recipes }: { recipes: recepieCard[] }) {
   // sets active tab on page re-load
   useEffect(() => {
     const recepieSlug = pathname.split("/")[2];
-    console.log(recepieSlug);
     $(`.recepie__${recepieSlug}`).addClass("menu__item-selected");
   }, [pathname]);
 
