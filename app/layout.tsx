@@ -6,6 +6,7 @@ import { recepieCard } from "./lib/interface";
 import Navbar from "./components/navbar";
 import MenuHeader from "./components/menuHeader";
 import MenuMobile from "./components/menuMobile";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: "Create Next App",
