@@ -28,7 +28,7 @@ export default function Navbar({ recipes }: { recipes: recepieCard[] }) {
       if (menu && isMobile) {
         setTimeout(() => {
           menu.css("display", "none");
-        }, 300);
+        }, 600);
       }
     }
 
