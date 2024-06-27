@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 async function getData() {
   const query = `
-      *[_type == 'recepie'] | order(_createdAt asc){
+      *[_type == 'recepie'] | order(_createdAt desc){
       name,
       slug,
       duration,
@@ -45,7 +45,7 @@ export default async function RootLayout({
           <div className="menu__footer">
             <ul className="menu__footer__contents">
               <li className="menu__footer__item">
-                <Link href="/about">About</Link>
+                <Link href="/">About</Link>
               </li>
             </ul>
           </div>
