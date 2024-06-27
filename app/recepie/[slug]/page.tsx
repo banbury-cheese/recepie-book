@@ -30,35 +30,31 @@ export default async function Recepie({
 }) {
   const recepie: fullRecepie = await getData(params.slug);
 
-  console.log(recepie);
-
   return (
     <div className="recepie">
       <p>
         <b>
-          {recepie.chef}, {recepie.name}
+          {recepie?.chef}, {recepie?.name}
         </b>{" "}
-        | {recepie.duration} - <i>{recepie.difficulty}</i>
+        | {recepie?.duration} - <i>{recepie?.difficulty}</i>
       </p>
       <br />
-      {/* <p>
-        {recepie.duration} - <i>{recepie.difficulty}</i>
-      </p> */}
       <div className="recepieContent width-constrained">
-        <PortableText value={recepie.content} />
+        <PortableText value={recepie?.content} />
       </div>
       <div className="recepieContent__images width-constrained">
-        {recepie.images?.map((image: any, idx: number) => (
+        {recepie?.images?.map((image: any, idx: number) => (
           <Link
             href={urlFor(image).url()}
             rel="noopener noreferrer"
             target="_blank"
+            key={idx}
           >
             <Image
               key={idx}
               width="500"
               height="500"
-              alt="recepieImage"
+              alt="food image"
               src={urlFor(image).url()}
             />
           </Link>
@@ -68,4 +64,4 @@ export default async function Recepie({
   );
 }
 
-export const revalidate = 60;
+export const revalidate = 1;
