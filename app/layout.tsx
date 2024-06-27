@@ -10,8 +10,7 @@ import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: "Recipes for Food",
-  description:
-    "Recipes for Food is a colaborative cookbook by Kay.",
+  description: "Recipes for Food is a colaborative cookbook by Kay.",
 };
 
 async function getData() {
@@ -53,6 +52,7 @@ export default async function RootLayout({
           </div>
         </div>
         <div className="content layout-wrapper__child">{children}</div>
+        <Analytics />
       </body>
     </html>
   );
