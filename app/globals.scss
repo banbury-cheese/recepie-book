@@ -130,10 +130,10 @@ img {
 a {
   color: currentColor;
   text-decoration: underline;
-}
 
-a:hover {
-  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .width-constrained {
@@ -214,7 +214,7 @@ a:hover {
     }
   }
   &__footer {
-    @apply absolute w-full bottom-0 bg-white;
+    @apply sticky w-full bottom-0 bg-white;
     border-top: var(--border);
 
     @extend .blocky;
@@ -255,6 +255,11 @@ a:hover {
     ol {
       list-style-type: decimal;
       margin-left: 1.1em;
+      &:after {
+        content: "";
+        display: inline-block;
+        width: 0px;
+      }
 
       li {
         display: list-item;

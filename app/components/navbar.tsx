@@ -2,46 +2,56 @@
 
 import Link from "next/link";
 import { recepieCard } from "../lib/interface";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import $ from "jquery";
+import useMediaQuery from "../lib/mediaQuery";
+import { usePathname } from "next/navigation";
 
 export default function Navbar({ recipes }: { recipes: recepieCard[] }) {
-  const [width, setWidth] = useState<number>(window.innerWidth);
+  const isMobile = useMediaQuery();
+  const pathname = usePathname();
 
-  function handleWindowSizeChange() {
-    setWidth(window.innerWidth);
-  }
+  // sets active tab on page re-load
+  useEffect(() => {
+    const recepieSlug = pathname.split("/")[2];
+    console.log(recepieSlug);
+    $(`.recepie__${recepieSlug}`).addClass("menu__item-selected");
+  }, [pathname]);
 
   useEffect(() => {
-    window.addEventListener("resize", handleWindowSizeChange);
-    return () => {
-      window.removeEventListener("resize", handleWindowSizeChange);
-    };
-  }, []);
+    const tabs = $(".menu__item");
+    const menu = $(".menu");
 
-  const isMobile = width <= 768;
+    function handleClick(card: Element) {
+      tabs.removeClass("menu__item-selected");
+      $(card).addClass("menu__item-selected");
+      if (menu && isMobile) {
+        setTimeout(() => {
+          menu.css("display", "none");
+        }, 300);
+      }
+    }
 
-  useEffect(() => {
-    const tabs = document.querySelectorAll(".menu__item");
-    tabs.forEach((card) => {
-      card.addEventListener("click", function (item) {
-        tabs.forEach((i) => i.classList.remove("menu__item-selected"));
-        card.classList.add("menu__item-selected");
-        if (isMobile) {
-          const menu = document.querySelector(".menu") as HTMLElement;
-          if (menu) {
-            setTimeout(() => {
-              menu.style.display = "none";
-            }, 300);
-          }
-        }
-      });
+    tabs.each((_index, card) => {
+      $(card).on("click", () => handleClick(card));
     });
+
+    return () => {
+      tabs.each((_index, card) => {
+        $(card).off("click");
+      });
+    };
   }, [recipes, isMobile]);
+
+  useEffect(() => {
+    const menu = $(".menu");
+    menu.css("display", isMobile ? "none" : "block");
+  }, [isMobile]);
 
   return (
     <ul className="menu__contents">
       {recipes.map((recepie: any, idx: number) => (
-        <li key={idx} className="menu__item">
+        <li key={idx} className={`menu__item recepie__${recepie.slug.current}`}>
           <Link
             className="menu__item__link"
             href={`/recepie/${recepie.slug.current}`}
