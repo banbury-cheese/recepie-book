@@ -37,7 +37,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className="layout-wrapper">
+      <body className="layout-wrapper vsc-initialized">
         <MenuMobile />
         <div className="layout-wrapper__child menu">
           <MenuHeader />
